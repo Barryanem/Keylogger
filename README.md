@@ -33,8 +33,8 @@ Keylogger/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/keylogger_project.git
-cd keylogger_project
+git clone  https://github.com/Barryanem/Keylogger.git
+cd Keylogger
 ```
 
 ### 2. Install Python dependencies (Optional)
@@ -139,7 +139,13 @@ python main.py
 
 - Maintains a hidden *.runtime* folder for all runtime data.
 
-- Prints versions of Python and all modules at startup for verification.
+- These versions and above should work:
+    ✅ Python version: 3.12.0
+    ✅ pyautogui version: 0.9.54
+    ✅ pandas version: 2.1.2
+    ✅ PIL version: 10.1.0
+    ✅ openpyxl version: 3.1.5
+    ✅ requests version: 2.32.5
 
 - Automatically cleans up *.runtime* and *__ pycache __* on exit.
 
