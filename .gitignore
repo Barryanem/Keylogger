@@ -1,0 +1,13 @@
+# Ignore runtime folder
+.runtime/
+
+# Ignore virtual environment
+.venv/
+
+# Ignore Python cache
+__pycache__/
+
+# Ignore sensitive local files
+*.env
+*.log
+*.xlsx

@@ -1,0 +1,7 @@
+# Keylogger project dependencies
+pyautogui
+pynput
+pandas
+Pillow
+openpyxl
+requests
