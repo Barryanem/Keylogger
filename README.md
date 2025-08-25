@@ -1,14 +1,36 @@
-# 🔑 Keylogger Project
+# 🖥️ Keylogger & System Activity Logger (Educational Project)
 
+⚠️ Disclaimer: This project was built strictly for educational and ethical purposes. It must not be used for unauthorized monitoring. The goal is to understand adversarial tactics and defensive strategies.
 
-A **cross-platform Python keylogger and system monitoring tool** that collects system information, captures screenshots, logs keystrokes, and can send data via email. Designed for **educational and ethical lab testing purposes only**.
+---
+📌 Overview
+
+This project simulates an adversary tool that captures user activity and exfiltrates data via email. It provides hands-on practice in understanding how attackers operate, and how defenders can detect and mitigate such behaviors.
+
+## ⚡ Features
+
+- ⌨️ **Logs keystrokes** (enabled via `ENABLE_KEYLOGGER`).  
+- 📸 **Captures screenshots** (enabled via `ENABLE_SCREENSHOTS`).  
+- 🖥️ **Collects system info** (OS, version, CPU, IP addresses).  
+- 📧 **Sends logs and screenshots via email**.  
+- 🌐 **Cross-platform support**: Windows, Linux, macOS.  
+- 🗂️ **Maintains a hidden runtime folder** `.runtime` for logs and screenshots.  
+- 🧹 **Cleans up** `.runtime` and `__pycache__` on exit.  
 
 ---
 
-## ⚠️ **Important Notice**
+## 🚀 Example Output
 
-This project is for **educational use in controlled environments only**.  
-Do **not** deploy on systems without permission. Unauthorized use may violate laws.
+
+```text
+✅ Keylogger enabled
+📸 Screenshot saved: .runtime/screenshots/screen_2025-08-24_12-34-56.png
+📧 Email sent successfully with screen_2025-08-24_12-34-56.png, keylog.txt, system_info.xlsx
+🗑️ Removed folder: .runtime/screenshots
+🧹 Cleared file: .runtime/keylog.txt
+🧹 Cleared Excel file: .runtime/system_info.xlsx
+✅ Cleanup complete: Screenshots, logs, Excel, venv, and __pycache__ cleared.
+```
 
 ---
 
@@ -55,50 +77,13 @@ RECEIVER_EMAIL = "receiver@example.com"
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 465
 ```
+🔑 Tip: Enable 2FA in Gmail, then generate an App Password for SMTP.
 
-#### ⚙️ Notes on SMTP & Gmail
-
-SMTP Server: smtp.gmail.com      .............................       (*Any smtp server can be used*)
-
-Port: 465 (SSL)
-
-#### 🔑 Using Gmail Securely
-
-Gmail blocks direct password login for third-party apps for security. To allow sending emails via Python:
-
-- Log in to your Gmail account.
-
-- Go to Manage your Google Account → Security → 2-Step Verification → App passwords.
-
-- Generate a new app password specifically for this script.
-
-- Use this app password as the **SENDER_PASSWORD** instead of your regular Gmail password.
-
-- This ensures the script can send emails securely without compromising your main account password.
-
-⚠️ Do not share your app password. Use this only in a secure, controlled testing environment.
-
-### 4. Run the project
+### 4. Run the script
 
 ```sh
 python main.py
 ``` 
-
-### 5. Logs & screenshots will be stored in the hidden .runtime folder and automatically emailed based on the configured intervals.
----
-
-## ⚡ Features
-
-- ⌨️ **Logs keystrokes** (enabled via `ENABLE_KEYLOGGER`).  
-- 📸 **Captures screenshots** (enabled via `ENABLE_SCREENSHOTS`).  
-- 🖥️ **Collects system info** (OS, version, CPU, IP addresses).  
-- 📧 **Sends logs and screenshots via email**.  
-- 🌐 **Cross-platform support**: Windows, Linux, macOS.  
-- 🗂️ **Maintains a hidden runtime folder** `.runtime` for logs and screenshots.  
-- 🧹 **Cleans up** `.runtime` and `__pycache__` on exit.  
-
----
-
 
 ## 🔧 Configuration Options
 
@@ -127,6 +112,17 @@ python main.py
 
 ---
 
+## 📤 Email Sending Logic
+
+❌ If both keylogger and screenshots disabled → exit immediately
+
+📸 If only screenshots enabled → send email every iteration (screenshots + system info)
+
+⌨️ If only keylogger enabled → send email every 5 iterations (keylogs + system info)
+
+📸 + ⌨️ If both enabled → send email every iteration (screenshots), and on 5th iteration include keylog.txt + system_info.xlsx
+
+---
 ## 🧩 Safety & Testing
 
 - ✅ Enable keylogging and screenshots only in a **controlled lab environment.**
@@ -153,21 +149,35 @@ python main.py
 
 ---
 
+
+## 🚀 Next Steps
+
+Planned improvements to expand the project:
+
+🔒 Add AES encryption to logs before sending
+
+🌐 Forward logs into Microsoft Sentinel / Splunk for SIEM detection practice
+
+🖥️ Validate cross-platform (Windows + Linux) behavior
+
+🧑‍💻 Develop a Red vs Blue Lab Exercise (attacker vs defender simulation)
+
+---
 ## ⚖️ License
 
 MIT License — Educational Use Only
 
-
 ---
 
-## 🚀 Example Output
+## 💸 Support My Work
 
+If you found this project useful and would like to support future cybersecurity projects:
 
-```text
-📸 Screenshot saved: .runtime/screenshots/screen_2025-08-24_12-34-56.png
-📧 Email sent successfully with screen_2025-08-24_12-34-56.png, keylog.txt, system_info.xlsx
-🗑️ Removed folder: .runtime/screenshots
-🧹 Cleared file: .runtime/keylog.txt
-🧹 Cleared Excel file: .runtime/system_info.xlsx
-✅ Cleanup complete: Screenshots, logs, Excel, venv, and __pycache__ cleared.
-```
+Bitcoin (BTC): 1F81TdYmwCPoDj9FCua5s5KFEY1HLk5gTY
+
+Ethereum (ETH): 0xf776d4593942c0e198ec34fc3c6ce4dc6c236627
+
+USDT (ERC20/TRC20): 0xf776d4593942c0e198ec34fc3c6ce4dc6c236627
+
+🙏 Every little bit helps me continue building practical projects for the cybersecurity community.
+
