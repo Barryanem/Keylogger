@@ -55,7 +55,7 @@ Keylogger/
 
 ### 1. Clone the repository
 ```bash
-git clone  https://github.com/Barryanem/Keylogger.git
+git clone  https://github.com/barxiii/Keylogger.git
 cd Keylogger
 ```
 
